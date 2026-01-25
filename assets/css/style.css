@@ -294,8 +294,8 @@ body {
 
     /* Mobile Layout Stack */
     .slide-content-wrapper {
-        flex-direction: column;
-        /* Strict stack */
+        flex-direction: column-reverse;
+        /* Image TOP, Content BOTTOM */
         height: 100dvh;
         padding-top: 70px;
         /* Offset for header */
@@ -304,19 +304,24 @@ body {
     }
 
     .image-section {
-        /* TOP SECTION */
+        /* TOP SECTION (Now visually top due to column-reverse if DOM is Text then Image?
+           Wait, DOM is Text then Image.
+           column-reverse makes Image (last) -> Top.
+           Text (first) -> Bottom. */
         width: 100%;
         height: 40%;
         /* Fixed 40% height for image */
         flex: 0 0 40%;
         /* Don't grow or shrink */
         position: relative;
+        /* Ensure this is the anchor for absolute buttons */
         right: auto;
         top: 0;
         transform: none !important;
         box-shadow: none;
-        border-bottom: 1px solid var(--primary);
-        /* Visual separator */
+        border-top: 1px solid var(--primary);
+        /* Separator on top of text */
+        border-bottom: none;
         border-left: none;
         background: #000;
         z-index: 5;
@@ -454,40 +459,53 @@ body {
     }
 
     .img-nav-btn {
-        display: flex;
+        display: flex !important;
+        /* FORCE DISPLAY */
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        background: rgba(0, 0, 0, 0.6);
-        border: 1px solid var(--primary);
+        width: 48px;
+        /* Larger hit area */
+        height: 48px;
+        background: rgba(0, 0, 0, 0.8);
+        /* Darker contrast */
+        border: 2px solid var(--primary);
+        /* Thicker border */
         border-radius: 50%;
-        color: #fff;
+        color: var(--primary);
+        /* Green arrow */
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        z-index: 20;
-        font-size: 1.2rem;
+        z-index: 999;
+        /* Super high z-index */
+        font-size: 1.5rem;
         backdrop-filter: blur(4px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
     .img-nav-prev {
-        left: 10px;
+        left: 15px;
     }
 
     .img-nav-next {
-        right: 10px;
+        right: 15px;
     }
 
     /* Specific fix for final Logo (Step 18) */
     .swiper-slide[data-step-id="18"] .image-section img {
-        padding: 2rem;
-        /* Add generous padding to shrink the logo visual */
-        max-width: 80%;
-        /* Constrain width */
+        display: block;
+        /* Ensure margin auto works */
+        padding: 1rem;
+        max-width: 60%;
+        /* Much smaller constraint */
+        width: 100%;
+        /* Ensure it tries to fill the constrained width */
+        height: 100%;
+        /* Maintain height for object-fit */
         margin: 0 auto;
-        /* Center it */
+        /* Center perfectly */
+        object-position: center;
     }
 }
 

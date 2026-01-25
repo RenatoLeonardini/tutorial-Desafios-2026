@@ -573,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         return `
-        <div class="swiper-slide">
+        <div class="swiper-slide" data-step-id="${slide.id}">
             <div class="slide-content-wrapper">
                 <div class="info-section" data-swiper-parallax="-300">
                     <div class="step-number" data-swiper-parallax="-500">${slide.id.toString().padStart(2, '0')}</div>

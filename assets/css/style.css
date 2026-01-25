@@ -479,6 +479,16 @@ body {
     .img-nav-next {
         right: 10px;
     }
+
+    /* Specific fix for final Logo (Step 18) */
+    .swiper-slide[data-step-id="18"] .image-section img {
+        padding: 2rem;
+        /* Add generous padding to shrink the logo visual */
+        max-width: 80%;
+        /* Constrain width */
+        margin: 0 auto;
+        /* Center it */
+    }
 }
 
 /* Zoom Fix */

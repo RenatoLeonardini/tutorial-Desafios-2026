@@ -268,95 +268,131 @@ body {
 
 /* Mobile */
 @media (max-width: 900px) {
+
     /* Mobile Header */
     .top-bar {
         height: 70px;
-        padding: 0 1.5rem;
-        background: rgba(0, 0, 0, 0.9); /* Solid background for legibility */
+        /* Reduced fixed height */
+        padding: 0 1rem;
+        background: #000;
+        /* Solid backround */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .uv-logo {
-        height: 45px;
+        height: 40px;
     }
 
     .logo {
-        font-size: 1rem;
+        font-size: 0.9rem;
         letter-spacing: 1px;
     }
 
     .header-left {
-        gap: 10px;
+        gap: 8px;
     }
 
     /* Mobile Layout Stack */
     .slide-content-wrapper {
-        flex-direction: column; /* Image TOP, Content BOTTOM */
-        height: 100dvh; /* Dynamic viewport height */
-        padding-top: 70px; /* Match new header height */
+        flex-direction: column;
+        /* Strict stack */
+        height: 100dvh;
+        padding-top: 70px;
+        /* Offset for header */
+        /* Ensure no scrolling on wrapper, children scroll if needed */
+        overflow: hidden;
     }
 
     .image-section {
+        /* TOP SECTION */
         width: 100%;
-        height: 45%; /* Image takes 45% of height */
+        height: 40%;
+        /* Fixed 40% height for image */
+        flex: 0 0 40%;
+        /* Don't grow or shrink */
         position: relative;
         right: auto;
         top: 0;
         transform: none !important;
         box-shadow: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid var(--primary);
+        /* Visual separator */
         border-left: none;
+        background: #000;
+        z-index: 5;
+    }
+
+    .image-section img {
+        /* CRITICAL: Ensure image is fully visible inside the box */
+        object-fit: contain;
+        padding: 5px;
+        /* Tiny breathing room */
     }
 
     .info-section {
+        /* BOTTOM SECTION */
         width: 100%;
-        height: 55%; /* Text takes remaining 55% */
+        height: 60%;
+        /* Remaining 60% for text */
+        flex: 1 1 auto;
+        /* Fill remaining space */
         margin-right: 0;
-        padding: 1.5rem;
-        background: #050505;
+        padding: 1.5rem 1rem;
+        background: #0b0b0b;
         border: none;
         border-radius: 0;
+        /* Enable internal scrolling for text */
         overflow-y: auto;
+        /* Reset positioning */
+        position: relative;
+        z-index: 10;
     }
 
     /* Typography adjustments */
     .step-number {
-        font-size: 4rem;
+        font-size: 3rem;
         top: 10px;
-        left: 10px;
-        opacity: 0.3;
-        z-index: 5;
+        left: 20px;
+        opacity: 0.15;
+        /* Subtler */
+        z-index: 0;
     }
 
     .step-title {
-        font-size: 1.5rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        margin-top: 0;
+        margin-bottom: 0.8rem;
+        color: var(--primary);
+        /* Highlight title */
     }
 
     .step-desc {
-        font-size: 1rem;
-        padding-left: 1rem;
-        margin-bottom: 3rem; /* Extra space for scrolling */
+        font-size: 0.95rem;
+        padding-left: 0.8rem;
+        line-height: 1.5;
+        color: #cecece;
+        padding-bottom: 2rem;
     }
-    
+
+    /* Hide nav arrows, rely on swipe */
     .nav-controls {
-        display: none; /* Hide arrows on mobile */
+        display: none;
     }
 
     /* Modal Mobile Overrides */
     .modal-content {
         width: 90%;
-        padding: 2rem 1.5rem;
-        max-height: 80vh;
+        padding: 1.5rem;
+        max-height: 85vh;
         overflow-y: auto;
     }
-    
+
     .modal-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
-    
+
     .modal-text {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -365,10 +401,16 @@ body {
     .logo span {
         display: none;
     }
-    
+
     .logo::after {
         content: "ING.";
         color: var(--primary);
+    }
+
+    /* Give more space to text on tiny screens */
+    .image-section {
+        height: 35%;
+        flex: 0 0 35%;
     }
 }
 

@@ -1,0 +1,393 @@
+:root {
+    --bg-dark: #050505;
+    --primary: #00ff41;
+    --secondary: #00f3ff;
+    --text-main: #ffffff;
+    --font-heading: 'Orbitron', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header - Floating */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    z-index: 100;
+    mix-blend-mode: normal;
+    /* Changed from difference to avoid logo color issues */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.uv-logo {
+    height: 90px;
+    width: auto;
+    /* This filter chain does the magic:
+       1. brightness(0) invert(1): Forces the logo to be pure white
+       2. drop-shadow: Adds the neon cyan glow 
+    */
+    filter: brightness(0) invert(1) drop-shadow(0 0 5px #00f3ff);
+}
+
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+/* Swiper Creative Layout */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 5%;
+}
+
+.slide-content-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+
+/* Image Card - Floating Off-Center */
+.image-section {
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) !important;
+    background: #111;
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+    overflow-y: hidden;
+    box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* Carousel behavior */
+    display: flex;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: var(--primary) transparent;
+}
+
+/* Custom Scrollbar for Webkit */
+.image-section::-webkit-scrollbar {
+    height: 8px;
+}
+
+.image-section::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.image-section::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 4px;
+}
+
+.image-section img {
+    width: auto;
+    height: 100%;
+    /* Fill height */
+    object-fit: cover;
+    /* or contain, but cover looks nicer if aspect ratio allows */
+    /* Technical clarity */
+    background: radial-gradient(circle at center, #1a1b26 0%, #000 100%);
+    transition: transform 0.5s ease;
+
+    /* Carousel item */
+    flex: 0 0 auto;
+    /* Don't shrink */
+    scroll-snap-align: center;
+}
+
+/* Text - Side by Side (No Overlap) */
+.info-section {
+    width: 38%;
+    /* Clear separation from the 60% image */
+    height: auto;
+    max-height: 80%;
+    position: relative;
+    z-index: 10;
+    padding: 2rem;
+    margin-right: 2%;
+    /* Gap */
+
+    /* Scrollable Text */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary) rgba(255, 255, 255, 0.1);
+
+    /* Frosted glass card */
+    background: rgba(10, 10, 10, 0.85);
+    /* Slightly darker for readability */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    /* Rounded corners */
+}
+
+/* Custom Scrollbar for Text */
+.info-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.info-section::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.info-section::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
+    border-radius: 3px;
+}
+
+.step-number {
+    font-family: var(--font-heading);
+    font-size: 12rem;
+    position: absolute;
+    top: -100px;
+    left: -50px;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.step-title {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    background: linear-gradient(90deg, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.step-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #aeaeae;
+    border-left: 2px solid var(--primary);
+    padding-left: 1.5rem;
+}
+
+/* Controls */
+.nav-controls {
+    position: absolute;
+    bottom: 50px;
+    left: 4rem;
+    /* Aligned with text */
+    z-index: 20;
+    display: flex;
+    gap: 20px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    position: static;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: scale(1.1);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 1rem;
+}
+
+/* Pagination - Minimal Line */
+.swiper-pagination-progressbar {
+    top: auto !important;
+    bottom: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.swiper-pagination-progressbar-fill {
+    background: var(--secondary) !important;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+    .slide-content-wrapper {
+        flex-direction: column-reverse;
+        /* Image top, text bottom */
+        height: 100%;
+        padding-top: 120px;
+    }
+
+    .image-section {
+        width: 100%;
+        height: 50%;
+        position: relative;
+        right: auto;
+        box-shadow: none;
+    }
+
+    .info-section {
+        width: 100%;
+        height: 50%;
+        background: #000;
+        border: none;
+        padding: 2rem;
+    }
+
+    .step-number {
+        font-size: 6rem;
+        top: 10px;
+        left: 20px;
+        z-index: 100;
+        opacity: 0.5;
+    }
+
+    .step-title {
+        font-size: 1.8rem;
+    }
+
+    .nav-controls {
+        display: none;
+    }
+}
+
+/* Zoom Fix */
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+    z-index: 9999 !important;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid var(--primary);
+    padding: 3rem;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.modal-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #ddd;
+}
+
+.highlight-text {
+    color: var(--secondary);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.modal-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 1rem 2.5rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+}
+
+.modal-btn:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 20px var(--primary);
+}

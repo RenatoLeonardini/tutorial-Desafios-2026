@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo de Ensamblaje Robot - Antigravity</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Header / Progress -->
+        <header class="top-bar">
+            <div class="header-left">
+                <img src="assets/img/logo_uv.png" alt="Logo UV" class="uv-logo">
+                <div class="logo">DESAFÍOS PARA LA <span class="highlight">INGENIERÍA</span></div>
+            </div>
+            <div class="progress-container">
+                <div class="swiper-pagination"></div>
+            </div>
+        </header>
+
+        <!-- Main Slider -->
+        <main class="swiper mySwiper">
+            <div class="swiper-wrapper" id="slides-container">
+                <!-- Slides will be injected via JS -->
+                <div class="swiper-slide loading-slide">
+                    <div class="loading-text">CARGANDO SISTEMA...</div>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="nav-controls">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Warning -->
+    <div id="challenge-warning-modal" class="modal-overlay"> <!-- Default hidden via CSS -->
+        <div class="modal-content">
+            <h2 class="modal-title">¡ATENCIÓN!</h2>
+            <p class="modal-text">Para el <strong>Desafío 1</strong> solo necesitarás <span class="highlight-text">1
+                    sensor ultrasónico</span>.</p>
+            <button id="close-modal-btn" class="modal-btn">ENTENDIDO</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

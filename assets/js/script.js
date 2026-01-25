@@ -551,13 +551,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- RENDER SLIDES ---
     container.innerHTML = slides.map(slide => {
-        // Logic for multiple images in the visual section
-        let imageHTML = '';
+        let imageContent = '';
+        let navButtons = '';
+
         if (slide.images && slide.images.length > 1) {
-            // Removed inline width to allow CSS flex/scroll handling
-            imageHTML = slide.images.map(src => `<img src="${src}" alt="Paso ${slide.id}" class="zoomable" data-zoom-src="${src}">`).join('');
+            // Render multiple images inside a scrolling wrapper
+            const imagesHTML = slide.images.map(src =>
+                `<img src="${src}" alt="Paso ${slide.id}" class="zoomable" data-zoom-src="${src}">`
+            ).join('');
+
+            imageContent = `<div class="image-container-wrapper" id="img-wrapper-${slide.id}">${imagesHTML}</div>`;
+
+            // Add navigation buttons
+            navButtons = `
+                <button class="img-nav-btn img-nav-prev" onclick="scrollImage('${slide.id}', -1)">❮</button>
+                <button class="img-nav-btn img-nav-next" onclick="scrollImage('${slide.id}', 1)">❯</button>
+            `;
         } else {
-            imageHTML = `<img src="${slide.img}" alt="Paso ${slide.id}" class="zoomable" data-zoom-src="${slide.img}">`;
+            // Single image
+            imageContent = `<img src="${slide.img}" alt="Paso ${slide.id}" class="zoomable" data-zoom-src="${slide.img}">`;
         }
 
         return `
@@ -568,8 +580,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2 class="step-title">${slide.title}</h2>
                     <div class="step-desc">${slide.text}</div>
                 </div>
+                <!-- Image Section with potential nav buttons -->
                 <div class="image-section" data-swiper-parallax-scale="0.8">
-                    ${imageHTML}
+                    ${imageContent}
+                    ${navButtons}
                 </div>
             </div>
         </div>
@@ -620,3 +634,19 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollOffset: 0,
     });
 });
+
+// Global function for image scrolling
+window.scrollImage = function (slideId, direction) {
+    const wrapper = document.getElementById(`img-wrapper-${slideId}`);
+    if (wrapper) {
+        // Scroll amount: width of the container
+        const scrollAmount = wrapper.clientWidth * direction;
+        wrapper.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+
+        // Stop propagation to prevent Swiper from swiping (extra safety)
+        event.stopPropagation();
+    }
+};

@@ -157,31 +157,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 1: Materiales</h3>
                     <p style="margin-bottom: 1rem;">Reúne lo siguiente:</p>
                     <ul style="list-style: none; padding: 0;">
-                        <li>• <strong>3 Soportes en 'L':</strong> Son esas piezas plásticas pequeñas en ángulo.</li>
-                        <li>• <strong>3 Sensores Ultrasónicos:</strong> Los que parecen 'ojos'.</li>
+                        <li>• <strong>1 Soporte en 'L':</strong> Es esa pieza plástica pequeña en ángulo.</li>
+                        <li>• <strong>1 Sensor Ultrasónico:</strong> El que parece 'ojos'.</li>
                         <li>• <strong>Cinta doble contacto.</strong></li>
-                        <li>• <strong>4 Tornillos medianos y sus tuercas.</strong></li>
+                        <li>• <strong>2 Tornillos medianos y sus tuercas.</strong></li>
                     </ul>
                 </div>
 
                 <div class="step-block">
-                    <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 2: Instalación de Soportes</h3>
-                    <p style="margin-bottom: 1rem;">Da vuelta el auto (los motores quedan abajo). En la parte delantera (la punta de flecha) instalaremos los soportes.<br>
-                    <strong>Orden de atornillado:</strong></p>
+                    <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 2: Instalación del Soporte</h3>
+                    <p style="margin-bottom: 1rem;">Da vuelta el auto (los motores quedan abajo). En la parte delantera (la punta de flecha) instalaremos el soporte.<br>
+                    <strong>Instalación:</strong></p>
                     <ul style="list-style: none; padding: 0;">
-                        <li>• <strong>Soporte Central:</strong> Usa 2 tornillos.</li>
-                        <li>• <strong>Soportes Laterales:</strong> Usan solo 1 tornillo cada uno.</li>
+                        <li>• <strong>Soporte Central:</strong> Usa 2 tornillos para fijarlo firmemente al centro.</li>
                         <li style="margin-top: 0.5rem;">• <strong>Ojo:</strong> La cabeza plana del tornillo va por arriba (tocando el plástico), la tuerca va por abajo.</li>
                     </ul>
                 </div>
 
                 <div class="step-block">
-                    <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 3: Pegado de Sensores</h3>
-                    <p style="margin-bottom: 1rem;">Pega los sensores a los soportes usando la cinta doble contacto.<br>
+                    <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 3: Pegado del Sensor</h3>
+                    <p style="margin-bottom: 1rem;">Pega el sensor al soporte usando la cinta doble contacto.<br>
                     <strong>¡ALERTA CRÍTICA!</strong> Antes de pegar definitivo, mira el hueco rectangular detrás del soporte.</p>
                     <ul style="list-style: none; padding: 0;">
                         <li>• <strong>El problema:</strong> Los pines del sensor NO deben tapar ese hueco, necesitamos espacio para pasar los cables.</li>
-                        <li>• <strong>La solución:</strong> Si queda muy apretado, pon <strong>2 o 3 capas de cinta</strong> una sobre otra para crear separación (como se ve en la foto de abajo).</li>
+                        <li>• <strong>La solución:</strong> Si queda muy apretado, pon <strong>2 o 3 capas de cinta</strong> una sobre otra para crear separación.</li>
                     </ul>
                 </div>
 
@@ -190,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p style="margin-bottom: 0.5rem;">Vista trasera y cableado de referencia. Observa cómo los pines quedan libres y no bloqueados por el soporte, permitiendo la conexión de los cables.</p>
                 </div>
             `,
-            images: ['assets/img/foto17.jpg', 'assets/img/foto18.jpg', 'assets/img/foto19.jpg', 'assets/img/foto20.jpg']
+            images: ['assets/img/foto17.jpg', 'assets/img/foto18.jpg', 'assets/img/foto19.png', 'assets/img/foto20.jpg']
         },
         8: {
             title: "CONEXIÓN ELECTRÓNICA",
@@ -199,27 +198,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 1 y 2: Clasificación de Cables</h3>
                     <p style="margin-bottom: 1rem;">Separa los cables en tres grupos:</p>
                     <ol style="margin-bottom: 1rem; padding-left: 1.2rem;">
-                        <li><strong>Grupo Trig:</strong> 3 cables iguales (ej. amarillos).</li>
-                        <li><strong>Grupo Echo:</strong> 3 cables iguales de otro color (ej. verdes).</li>
-                        <li><strong>Grupo Energía:</strong> Los 2 cables especiales 'tipo pulpo' (uno rojo y uno negro) que tienen 3 cabezas que se unen en una sola.</li>
+                        <li><strong>Grupo Trig:</strong> 1 cable (ej. amarillo).</li>
+                        <li><strong>Grupo Echo:</strong> 1 cable de otro color (ej. verde).</li>
+                        <li><strong>Grupo Energía:</strong> Los 2 cables especiales del sensor.</li>
                     </ol>
                 </div>
 
                 <div class="step-block">
                     <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 3 y 4: Conexión de Pines</h3>
-                    <p style="margin-bottom: 1rem;">Mira los nombres escritos en cada sensor (VCC, Trig, Echo, GND) y conecta así:</p>
+                    <p style="margin-bottom: 1rem;">Mira los nombres escritos en el sensor (VCC, Trig, Echo, GND) y conecta así:</p>
                     <ul style="list-style: none; padding: 0;">
-                        <li>• <strong>VCC:</strong> Usa una de las cabezas del cable <strong>ROJO</strong> (pulpo).</li>
-                        <li>• <strong>GND:</strong> Usa una de las cabezas del cable <strong>NEGRO</strong> (pulpo).</li>
+                        <li>• <strong>VCC:</strong> Conecta al cable <strong>ROJO</strong>.</li>
+                        <li>• <strong>GND:</strong> Conecta al cable <strong>NEGRO</strong>.</li>
                         <li>• <strong>Trig:</strong> Usa la cabeza del cable amarillo.</li>
                         <li>• <strong>Echo:</strong> Usa la cabeza del cable verde.</li>
                     </ul>
-                    <p style="margin-top: 0.5rem;"><strong>Repite:</strong> Haz lo mismo en los 3 sensores.</p>
                 </div>
 
                 <div class="step-block">
                     <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 5: Orden y Pasacables</h3>
-                    <p style="margin-bottom: 1rem;">Ahora pon orden. Toma todos los cables conectados y pásalos con cuidado <strong>por debajo</strong> de los sensores.<br>
+                    <p style="margin-bottom: 1rem;">Ahora pon orden. Toma todos los cables conectados y pásalos con cuidado <strong>por debajo</strong> del sensor.<br>
                     <strong>El Destino:</strong> Mételos por el agujero circular grande del centro para que salgan hacia arriba del chasis. Deben quedar libres y ordenados como en la foto, listos para conectarse al cerebro del robot.</p>
                 </div>
             `,
@@ -436,13 +434,11 @@ document.addEventListener('DOMContentLoaded', () => {
             text: `
                 <div class="step-block">
                     <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 1: Zona Analog In (Sensores y Energía)</h3>
-                    <p style="margin-bottom: 1rem;">Ubica la zona <strong>ANALOG IN</strong> en el Arduino. Pon el robot mirándote de frente (sensores mirándote a ti) y conecta los cables siguiendo este mapa:</p>
+                    <p style="margin-bottom: 1rem;">Ubica la zona <strong>ANALOG IN</strong> en el Arduino. Pon el robot mirándote de frente (sensor mirándote a ti) y conecta los cables siguiendo este mapa:</p>
                     <ul style="list-style: none; padding: 0;">
-                        <li>• <strong>Sensor Izquierdo:</strong> Echo en <strong>A5</strong>, Trig en <strong>A4</strong>.</li>
                         <li>• <strong>Sensor Central:</strong> Echo en <strong>A3</strong>, Trig en <strong>A2</strong>.</li>
-                        <li>• <strong>Sensor Derecho:</strong> Echo en <strong>A1</strong>, Trig en <strong>A0</strong>.</li>
                     </ul>
-                    <p style="margin-top: 0.5rem;"><strong>Energía Común:</strong> Finalmente, conecta el manojo de cables negros al pin <strong>GND</strong> y el manojo de cables rojos al pin <strong>5V</strong> del Arduino (se encuentran luego de los pines análogos).</p>
+                    <p style="margin-top: 0.5rem;"><strong>Energía Común:</strong> Finalmente, conecta el cable negro al pin <strong>GND</strong> y el cable rojo al pin <strong>5V</strong> del Arduino (se encuentran luego de los pines análogos).</p>
                 </div>
 
                 <div class="step-block">

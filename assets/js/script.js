@@ -471,6 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">IMAGEN 2: Fijación</h3>
                     <p style="margin-bottom: 1rem;">Corta un trozo de <strong>cinta doble contacto</strong> y pégalo en la base del sensor.<br>
                     Adhiere el micrófono firmemente a la madera en la zona indicada. Asegúrate de que quede bien pegado para que no se suelte con las vibraciones del motor.</p>
+                    <p style="margin-bottom: 1rem;"><strong>Calibración:</strong> El <strong>tornillo dorado (pequeño)</strong> es el encargado de calibrar la intensidad de sonido que recibirá el sensor. La idea es moverlo hacia un lado o hacia el otro hasta que detecte el sonido deseado.</p>
                 </div>
 
                 <div class="step-block">
